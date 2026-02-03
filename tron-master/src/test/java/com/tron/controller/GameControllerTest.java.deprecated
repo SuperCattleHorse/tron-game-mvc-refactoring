@@ -1,0 +1,117 @@
+package com.tron.controller;
+
+import javax.swing.SwingUtilities;
+
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Unit tests for the {@link GameController} class.
+ * 
+ * <p>This test class validates the main controller functionality, including
+ * application initialization, frame setup, and basic controller structure.
+ * Since GameController manages the entire application lifecycle and GUI,
+ * tests focus on verifying that the controller can be instantiated and
+ * the run method executes without errors. Full GUI testing would require
+ * integration tests.</p>
+ * 
+ * <p>Note: These tests verify the structural integrity of the controller
+ * rather than full GUI behavior. Complete GUI testing would involve user
+ * interaction simulation and visual verification, which are beyond the scope
+ * of basic unit tests.</p>
+ * 
+ * @author MattBrown
+ * @author MattBrown
+ * @version 1.0
+ * @see GameController
+ */
+@DisplayName("GameController Class Unit Tests")
+public class GameControllerTest {
+
+    private GameController controller;
+    
+    /**
+     * Sets up test fixtures before each test method.
+     * Gets the singleton GameController instance for testing.
+     */
+    @BeforeEach
+    void setUp() {
+        controller = GameController.getInstance();
+    }
+    
+    /**
+     * Tests successful creation of GameController instance.
+     * Verifies that the controller can be instantiated.
+     */
+    @Test
+    @DisplayName("Should create GameController instance successfully")
+    void testControllerCreation() {
+        assertNotNull(controller, "Controller should not be null");
+    }
+    
+    /**
+     * Tests that controller implements Runnable interface.
+     * Ensures the controller can be used with SwingUtilities.invokeLater.
+     */
+    @Test
+    @DisplayName("Should implement Runnable interface")
+    void testImplementsRunnable() {
+        assertTrue(controller instanceof Runnable,
+                "Controller should implement Runnable");
+    }
+    
+    /**
+     * Tests that run method can be invoked without immediate errors.
+     * This verifies basic initialization logic executes successfully.
+     * 
+     * Note: Full GUI testing requires the event dispatch thread and
+     * visual verification, which are not covered in basic unit tests.
+     */
+    @Test
+    @DisplayName("Should execute run method without throwing exceptions")
+    void testRunMethodExecutes() {
+        assertDoesNotThrow(() -> {
+            SwingUtilities.invokeLater(() -> {
+                try {
+                    controller.run();
+                } catch (Exception e) {
+                    fail("Run method should not throw exceptions: " + e.getMessage());
+                }
+            });
+        }, "Run method invocation should not throw exceptions");
+    }
+    
+    /**
+     * Tests that singleton instance is always the same.
+     * Verifies controller class maintains singleton pattern.
+     */
+    @Test
+    @DisplayName("Should return same singleton instance")
+    void testSingletonInstance() {
+        GameController controller1 = GameController.getInstance();
+        GameController controller2 = GameController.getInstance();
+        
+        assertNotNull(controller1, "First controller should not be null");
+        assertNotNull(controller2, "Second controller should not be null");
+        assertSame(controller1, controller2,
+                "Controllers should be the same singleton instance");
+    }
+    
+    /**
+     * Tests that main method exists and accepts String array parameter.
+     * Verifies the application entry point is properly defined.
+     */
+    @Test
+    @DisplayName("Should have valid main method signature")
+    void testMainMethodExists() {
+        assertDoesNotThrow(() -> {
+            GameController.class.getMethod("main", String[].class);
+        }, "Main method should exist with correct signature");
+    }
+}

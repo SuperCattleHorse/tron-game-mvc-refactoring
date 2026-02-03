@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+            style="-fx-background-color: black;">
+    
+    <!-- Center: Picture panes (switched between main menu and instructions) -->
+    <center>
+        <StackPane fx:id="picturePane" style="-fx-background-color: black;">
+            <ImageView fx:id="mainMenuImageView" preserveRatio="true">
+                <Image url="@tron0_0.jpg"/>
+            </ImageView>
+        </StackPane>
+    </center>
+    
+    <!-- Instructions pane (initially hidden, will be swapped with picturePane) -->
+    <StackPane fx:id="instructionsPane" visible="false" managed="false" 
+               style="-fx-background-color: black;">
+        <ImageView fx:id="instructionsImageView" preserveRatio="true">
+            <Image url="@instructions_page.png"/>
+        </ImageView>
+        
+        <!-- Pagination buttons overlay (right side, vertical layout) -->
+        <VBox fx:id="paginationBox" alignment="CENTER" spacing="15" 
+              style="-fx-background-color: transparent;" 
+              StackPane.alignment="CENTER_RIGHT"
+              translateX="340"
+              translateY="80">
+            <!-- translateX moves it 340px to the right, translateY moves it 80px down -->
+            
+            <!-- Previous Page Button -->
+            <Button fx:id="prevPageButton" 
+                    text="▲" 
+                    style="-fx-background-color: rgba(0, 255, 255, 0.2); 
+                           -fx-text-fill: cyan; 
+                           -fx-border-color: cyan; 
+                           -fx-border-width: 1; 
+                           -fx-border-radius: 3; 
+                           -fx-background-radius: 3; 
+                           -fx-font-size: 16px; 
+                           -fx-font-weight: bold; 
+                           -fx-padding: 10 15 10 15;" 
+                    disable="true"/>
+            
+            <!-- Page Indicator -->
+            <Label fx:id="pageIndicator" 
+                   text="1/2" 
+                   textFill="WHITE" 
+                   style="-fx-font-size: 14px; 
+                          -fx-font-weight: bold; 
+                          -fx-padding: 5 10 5 10;"/>
+            
+            <!-- Next Page Button -->
+            <Button fx:id="nextPageButton" 
+                    text="▼" 
+                    style="-fx-background-color: rgba(0, 255, 255, 0.2); 
+                           -fx-text-fill: cyan; 
+                           -fx-border-color: cyan; 
+                           -fx-border-width: 1; 
+                           -fx-border-radius: 3; 
+                           -fx-background-radius: 3; 
+                           -fx-font-size: 16px; 
+                           -fx-font-weight: bold; 
+                           -fx-padding: 10 15 10 15;"/>
+        </VBox>
+    </StackPane>
+    
+    <!-- Bottom: Button panel -->
+    <bottom>
+        <HBox alignment="CENTER" spacing="0" style="-fx-background-color: black;">
+            <padding>
+                <Insets top="0" right="0" bottom="0" left="0"/>
+            </padding>
+            
+            <!-- Play Button -->
+            <Button fx:id="playButton" 
+                    style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2; -fx-padding: 0;">
+                <graphic>
+                    <ImageView preserveRatio="true" fitWidth="250" fitHeight="80">
+                        <Image url="@play_before.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+            
+            <!-- Instructions Button -->
+            <Button fx:id="instructionsButton" 
+                    style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2; -fx-padding: 0;">
+                <graphic>
+                    <ImageView fx:id="instructionsButtonImage" preserveRatio="true" fitWidth="250" fitHeight="80">
+                        <Image url="@instructions_before.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+            
+            <!-- Options Button -->
+            <Button fx:id="optionsButton" 
+                    style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2; -fx-padding: 0;">
+                <graphic>
+                    <ImageView preserveRatio="true" fitWidth="250" fitHeight="80">
+                        <Image url="@options_before.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+            
+            <!-- Quit Button -->
+            <Button fx:id="quitButton" 
+                    style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2; -fx-padding: 0;">
+                <graphic>
+                    <ImageView preserveRatio="true" fitWidth="250" fitHeight="80">
+                        <Image url="@quit_before.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+        </HBox>
+    </bottom>
+    
+</BorderPane>

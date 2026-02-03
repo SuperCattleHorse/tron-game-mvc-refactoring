@@ -1,0 +1,250 @@
+package com.tron.view.factory;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import com.tron.legacy.TronMapSurvival;
+import com.tron.legacy.TronMapStory;
+import com.tron.legacy.TronMapTwoPlayer;
+import com.tron.view.game.SurvivalGameView;
+import com.tron.view.game.StoryGameView;
+import com.tron.view.game.TwoPlayerGameView;
+
+import javax.swing.JLabel;
+
+/**
+ * Unit tests for the {@link GameViewFactory} abstract class and its implementations.
+ * 
+ * <p>This test class validates the Factory Method Pattern implementation for game view creation.
+ * Tests ensure that:
+ * <ul>
+ *   <li>Abstract factory defines correct contract for view creation</li>
+ *   <li>Concrete factory correctly instantiates different view types</li>
+ *   <li>Views are properly initialized with their game map components</li>
+ *   <li>Factory pattern reduces coupling between controller and specific view classes</li>
+ * </ul>
+ * </p>
+ * 
+ * <p>Design Pattern: Factory Method Pattern (Creational)
+ * - Abstract class defines factory methods for creating different view types
+ * - Concrete factory implements all factory methods
+ * - Enables loose coupling between GameController and concrete View classes</p>
+ * 
+ * <p>Note: Tests work with legacy TronMap classes to maintain compatibility
+ * with existing codebase while demonstrating factory benefits for future improvements.</p>
+ * 
+ * @author Refactoring Team
+ * @version 1.0
+ * @see GameViewFactory
+ * @see DefaultGameViewFactory
+ * @see TwoPlayerGameView
+ * @see SurvivalGameView
+ * @see StoryGameView
+ */
+@DisplayName("GameViewFactory Class Unit Tests")
+@SuppressWarnings("deprecation")
+public class GameViewFactoryTest {
+
+    private GameViewFactory factory;
+    private TronMapTwoPlayer twoPlayerMap;
+    private TronMapSurvival survivalMap;
+    private TronMapStory storyMap;
+
+    /**
+     * Sets up test fixtures before each test method.
+     * Initializes factory and game map objects needed for view creation.
+     */
+    @BeforeEach
+    void setUp() {
+        factory = new DefaultGameViewFactory();
+        
+        // Create temporary labels for game map initialization
+        JLabel label1 = new JLabel("Test Label 1");
+        JLabel label2 = new JLabel("Test Label 2");
+        JLabel label3 = new JLabel("Test Label 3");
+        
+        // Initialize game map components
+        twoPlayerMap = new TronMapTwoPlayer(label1, label2, 2);
+        survivalMap = new TronMapSurvival(label1, 1);
+        storyMap = new TronMapStory(label1, label2, 2);
+    }
+
+    /**
+     * Tests that DefaultGameViewFactory creates TwoPlayerGameView successfully.
+     * 
+     * Verifies:
+     * - Factory returns non-null view instance
+     * - Returned object is of correct type (TwoPlayerGameView)
+     * - View is properly initialized with provided game map
+     */
+    @Test
+    @DisplayName("DefaultGameViewFactory should create TwoPlayerGameView instance")
+    void testCreateTwoPlayerView() {
+        // Arrange
+        GameViewFactory factory = new DefaultGameViewFactory();
+        
+        // Act
+        TwoPlayerGameView view = factory.createTwoPlayerView(twoPlayerMap);
+        
+        // Assert
+        assertNotNull(view, "TwoPlayerGameView should not be null");
+        assertTrue(view instanceof TwoPlayerGameView, 
+                "View should be instance of TwoPlayerGameView");
+    }
+
+    /**
+     * Tests that DefaultGameViewFactory creates SurvivalGameView successfully.
+     * 
+     * Verifies:
+     * - Factory returns non-null view instance
+     * - Returned object is of correct type (SurvivalGameView)
+     * - View is properly initialized with provided game map
+     */
+    @Test
+    @DisplayName("DefaultGameViewFactory should create SurvivalGameView instance")
+    void testCreateSurvivalView() {
+        // Arrange
+        GameViewFactory factory = new DefaultGameViewFactory();
+        
+        // Act
+        SurvivalGameView view = factory.createSurvivalView(survivalMap);
+        
+        // Assert
+        assertNotNull(view, "SurvivalGameView should not be null");
+        assertTrue(view instanceof SurvivalGameView, 
+                "View should be instance of SurvivalGameView");
+    }
+
+    /**
+     * Tests that DefaultGameViewFactory creates StoryGameView successfully.
+     * 
+     * Verifies:
+     * - Factory returns non-null view instance
+     * - Returned object is of correct type (StoryGameView)
+     * - View is properly initialized with provided game map
+     */
+    @Test
+    @DisplayName("DefaultGameViewFactory should create StoryGameView instance")
+    void testCreateStoryView() {
+        // Arrange
+        GameViewFactory factory = new DefaultGameViewFactory();
+        
+        // Act
+        StoryGameView view = factory.createStoryView(storyMap);
+        
+        // Assert
+        assertNotNull(view, "StoryGameView should not be null");
+        assertTrue(view instanceof StoryGameView, 
+                "View should be instance of StoryGameView");
+    }
+
+    /**
+     * Tests that factory creates new instances on each invocation.
+     * 
+     * Verifies:
+     * - Each factory call produces a new view instance
+     * - Views are not cached or reused
+     * - Multiple calls create independent objects
+     */
+    @Test
+    @DisplayName("Factory should create new view instance on each call")
+    void testFactoryCreatesNewInstances() {
+        // Arrange
+        GameViewFactory factory = new DefaultGameViewFactory();
+        
+        // Act
+        TwoPlayerGameView view1 = factory.createTwoPlayerView(twoPlayerMap);
+        TwoPlayerGameView view2 = factory.createTwoPlayerView(twoPlayerMap);
+        
+        // Assert
+        assertNotNull(view1, "First view should not be null");
+        assertNotNull(view2, "Second view should not be null");
+        assertTrue(view1 != view2, 
+                "Each factory call should create a different instance");
+    }
+
+    /**
+     * Tests that factory correctly associates views with their game maps.
+     * 
+     * Verifies:
+     * - Created view receives the provided game map
+     * - View can access and render the game map
+     */
+    @Test
+    @DisplayName("Factory should correctly associate view with game map")
+    void testViewGameMapAssociation() {
+        // Arrange
+        GameViewFactory factory = new DefaultGameViewFactory();
+        
+        // Act
+        TwoPlayerGameView view = factory.createTwoPlayerView(twoPlayerMap);
+        
+        // Assert
+        assertNotNull(view, "View should not be null");
+        assertNotNull(view.getGameMap(), "View's game map should not be null");
+        assertTrue(view.getGameMap() == twoPlayerMap, 
+                "View should be associated with the provided game map");
+    }
+
+    /**
+     * Tests that all factory methods follow the same contract.
+     * 
+     * Verifies:
+     * - All factory methods successfully create view instances
+     * - Each view type is correctly instantiated
+     * - Factory interface is properly implemented
+     */
+    @Test
+    @DisplayName("All factory methods should produce valid view instances")
+    void testAllFactoryMethodsProduceValidViews() {
+        // Arrange
+        GameViewFactory factory = new DefaultGameViewFactory();
+        
+        // Act & Assert
+        TwoPlayerGameView twoPlayerView = factory.createTwoPlayerView(twoPlayerMap);
+        assertNotNull(twoPlayerView, "TwoPlayerGameView should not be null");
+        assertTrue(twoPlayerView instanceof TwoPlayerGameView, 
+                "View should be TwoPlayerGameView instance");
+        
+        SurvivalGameView survivalView = factory.createSurvivalView(survivalMap);
+        assertNotNull(survivalView, "SurvivalGameView should not be null");
+        assertTrue(survivalView instanceof SurvivalGameView, 
+                "View should be SurvivalGameView instance");
+        
+        StoryGameView storyView = factory.createStoryView(storyMap);
+        assertNotNull(storyView, "StoryGameView should not be null");
+        assertTrue(storyView instanceof StoryGameView, 
+                "View should be StoryGameView instance");
+    }
+
+    /**
+     * Tests that factory pattern enables loose coupling.
+     * 
+     * Verifies:
+     * - DefaultGameViewFactory is the only place where concrete view
+     *   classes are instantiated
+     * - Client code depends on abstract GameViewFactory interface
+     * - Adding new view types requires only factory modification
+     */
+    @Test
+    @DisplayName("Factory pattern should enable loose coupling")
+    void testFactoryEnablesLooseCoupling() {
+        // This test verifies the factory pattern's benefit:
+        // The client code (GameController) should depend on GameViewFactory,
+        // not on concrete view classes. This test documents that benefit.
+        
+        // Arrange
+        GameViewFactory factory = new DefaultGameViewFactory();
+        
+        // Act - Client only knows about the abstract factory interface
+        TwoPlayerGameView view = factory.createTwoPlayerView(twoPlayerMap);
+        
+        // Assert
+        assertNotNull(view, "View created through factory should not be null");
+        assertTrue(view instanceof TwoPlayerGameView, 
+                "Factory correctly creates concrete type without client knowing details");
+    }
+}

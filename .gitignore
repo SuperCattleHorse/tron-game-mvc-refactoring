@@ -1,0 +1,113 @@
+# ============ Build Outputs ============ 
+# Compiled class files
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+
+# Package Files
+*.zip
+*.tar.gz
+*.rar
+
+# Maven output directory
+target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Gradle build directory
+build/
+.gradle/
+
+# ============ IDE Files ============
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+*.ids
+*.orig
+*.log
+*.bak
+
+# Eclipse
+.settings/
+.project
+.classpath
+.metadata/
+bin/
+tmp/
+
+# VS Code
+.vscode/
+
+# ============ Operating System Files ============
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ============ Dependency Management ============
+# Maven
+pom.xml.versionsBackup
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# ============ Log Files ============
+*.log
+logs/
+
+# ============ Runtime Data ============
+# JavaFX cache or other runtime files
+*.runtime/
+*.cache/
+
+# ============ Database Files ============
+# For high score storage if using file-based database
+*.db
+*.sqlite
+*.h2.db
+
+# ============ Temporary Files ============
+tmp/
+temp/
+*.tmp
+*.temp
+
+# ============ Documentation ============
+# Ignore auto-generated docs (but keep manually generated javadocs)
+# Note: We will manually place generated documentation in javadocs/ folder
+auto-generated-docs/
+
+# ============ Specific ============
+# Game screenshots or temporary media files (except videos which must be submitted)
+
+!diagram/  # Keep diagram folder structure
+!javadocs/ # Keep javadocs folder structure  
+!video/    # Keep video folder structure
+
+# ============ Miscellaneous ============
+# Configuration files (if containing sensitive information)
+config.properties
+*.config
+
+# Backup files
+*.backup
+*.save

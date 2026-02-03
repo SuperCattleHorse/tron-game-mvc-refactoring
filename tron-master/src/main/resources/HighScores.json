@@ -1,0 +1,51 @@
+[
+  {
+    "score": 99999,
+    "nickname": "unknown",
+    "gender": "Hidden",
+    "manifesto": "No manifesto",
+    "date": "1970-01-01"
+  },
+  {
+    "score": 9999,
+    "nickname": "TestPlayer1",
+    "gender": "Male",
+    "manifesto": "I am the best!",
+    "date": "2025-12-05"
+  },
+  {
+    "score": 9999,
+    "nickname": "unknown",
+    "gender": "Hidden",
+    "manifesto": "No manifesto",
+    "date": "1970-01-01"
+  },
+  {
+    "score": 9999,
+    "nickname": "unknown",
+    "gender": "Hidden",
+    "manifesto": "No manifesto",
+    "date": "1970-01-01"
+  },
+  {
+    "score": 9999,
+    "nickname": "unknown",
+    "gender": "Hidden",
+    "manifesto": "No manifesto",
+    "date": "1970-01-01"
+  },
+  {
+    "score": 8888,
+    "nickname": "TestPlayer2",
+    "gender": "Female",
+    "manifesto": "Victory is mine",
+    "date": "2025-12-04"
+  },
+  {
+    "score": 7777,
+    "nickname": "unknown",
+    "gender": "Hidden",
+    "manifesto": "No manifesto",
+    "date": "1970-01-01"
+  }
+]

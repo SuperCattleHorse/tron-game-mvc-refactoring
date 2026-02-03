@@ -1,0 +1,31 @@
+/* OptionsMenu.css - Custom styling for Options Menu UI components */
+
+/* ChoiceBox with white text */
+.choice-box-white-text .label {
+    -fx-text-fill: white;
+}
+
+.choice-box-white-text:hover .label {
+    -fx-text-fill: white;
+}
+
+/* Dropdown list cells with white text */
+.choice-box-white-text .list-cell {
+    -fx-text-fill: white;
+    -fx-background-color: #2a2a2a;
+}
+
+.choice-box-white-text .list-cell:hover {
+    -fx-text-fill: white;
+    -fx-background-color: #404040;
+}
+
+.choice-box-white-text .list-cell:selected {
+    -fx-text-fill: white;
+    -fx-background-color: #505050;
+}
+
+/* Popup container styling */
+.choice-box-white-text .context-menu {
+    -fx-background-color: #2a2a2a;
+}

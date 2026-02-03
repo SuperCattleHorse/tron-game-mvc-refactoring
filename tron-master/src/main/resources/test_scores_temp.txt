@@ -1,0 +1,72 @@
+[
+  {
+    "score": 120,
+    "nickname": "unknown",
+    "gender": "Hidden",
+    "manifesto": "No manifesto",
+    "date": "1970-01-01"
+  },
+  {
+    "score": 110,
+    "nickname": "unknown",
+    "gender": "Hidden",
+    "manifesto": "No manifesto",
+    "date": "1970-01-01"
+  },
+  {
+    "score": 100,
+    "nickname": "unknown",
+    "gender": "Hidden",
+    "manifesto": "No manifesto",
+    "date": "1970-01-01"
+  },
+  {
+    "score": 90,
+    "nickname": "unknown",
+    "gender": "Hidden",
+    "manifesto": "No manifesto",
+    "date": "1970-01-01"
+  },
+  {
+    "score": 80,
+    "nickname": "unknown",
+    "gender": "Hidden",
+    "manifesto": "No manifesto",
+    "date": "1970-01-01"
+  },
+  {
+    "score": 70,
+    "nickname": "unknown",
+    "gender": "Hidden",
+    "manifesto": "No manifesto",
+    "date": "1970-01-01"
+  },
+  {
+    "score": 60,
+    "nickname": "unknown",
+    "gender": "Hidden",
+    "manifesto": "No manifesto",
+    "date": "1970-01-01"
+  },
+  {
+    "score": 50,
+    "nickname": "unknown",
+    "gender": "Hidden",
+    "manifesto": "No manifesto",
+    "date": "1970-01-01"
+  },
+  {
+    "score": 40,
+    "nickname": "unknown",
+    "gender": "Hidden",
+    "manifesto": "No manifesto",
+    "date": "1970-01-01"
+  },
+  {
+    "score": 30,
+    "nickname": "unknown",
+    "gender": "Hidden",
+    "manifesto": "No manifesto",
+    "date": "1970-01-01"
+  }
+]

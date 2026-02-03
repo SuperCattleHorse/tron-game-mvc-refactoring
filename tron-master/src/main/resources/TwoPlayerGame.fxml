@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+            style="-fx-background-color: black;">
+    
+    <!-- Center: Game container (canvas + game over overlay) -->
+    <center>
+        <StackPane fx:id="gameContainer">
+            <!-- Game canvas will be added programmatically -->
+            
+            <!-- Game over panel (initially hidden) -->
+            <VBox fx:id="gameOverPanel" alignment="CENTER" spacing="15" 
+                  maxWidth="500" maxHeight="400" visible="false"
+                  style="-fx-background-color: rgba(0, 0, 0, 0.8);">
+                <padding>
+                    <Insets top="50" right="50" bottom="50" left="50"/>
+                </padding>
+                
+                <!-- Game Result Image (will be set dynamically) -->
+                <ImageView fx:id="resultImageView" preserveRatio="true" 
+                           fitWidth="360" fitHeight="60"/>
+                
+                <!-- Game Over Label -->
+                <Label fx:id="gameOverLabel" textFill="WHITE">
+                    <font>
+                        <Font name="Monospaced" size="24"/>
+                    </font>
+                </Label>
+                
+                <!-- Restart Button -->
+                <Button fx:id="restartButton" prefWidth="200" prefHeight="40"
+                        style="-fx-background-color: transparent; -fx-cursor: hand; -fx-border-color: white; -fx-border-width: 2;">
+                    <graphic>
+                        <ImageView preserveRatio="true" fitWidth="200" fitHeight="40">
+                            <Image url="@restart.png"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                
+                <!-- Game Menu Button -->
+                <Button fx:id="menuButton" prefWidth="200" prefHeight="40"
+                        style="-fx-background-color: transparent; -fx-cursor: hand; -fx-border-color: white; -fx-border-width: 2;">
+                    <graphic>
+                        <ImageView preserveRatio="true" fitWidth="200" fitHeight="40">
+                            <Image url="@play_before.png"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                
+            </VBox>
+        </StackPane>
+    </center>
+    
+    <!-- Bottom: Score panel for both players -->
+    <bottom>
+        <HBox fx:id="scorePanel" alignment="CENTER" spacing="40" 
+              style="-fx-background-color: black;">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            
+            <Label fx:id="scoreLabel1" text="Player 1: 0   Boost: 3" textFill="CYAN">
+                <font>
+                    <Font name="Monospaced" size="18"/>
+                </font>
+            </Label>
+            
+            <Label fx:id="scoreLabel2" text="Player 2: 0   Boost: 3" textFill="PINK">
+                <font>
+                    <Font name="Monospaced" size="18"/>
+                </font>
+            </Label>
+        </HBox>
+    </bottom>
+    
+</BorderPane>

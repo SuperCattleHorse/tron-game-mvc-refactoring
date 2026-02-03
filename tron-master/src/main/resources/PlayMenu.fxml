@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    
+    <!-- Center: Upper section containing game modes or high scores -->
+    <center>
+        <VBox fx:id="upperSection" alignment="CENTER" spacing="0">
+            
+            <!-- Game modes panel -->
+            <VBox fx:id="gameModesPanel" alignment="CENTER" spacing="0">
+                
+                <!-- Game mode buttons -->
+                <HBox alignment="CENTER" spacing="0" style="-fx-background-color: black;">
+                    
+                    <!-- Story Button -->
+                    <Button fx:id="storyButton" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2; -fx-padding: 0;">
+                        <graphic>
+                            <ImageView fitHeight="120" fitWidth="250" preserveRatio="true">
+                                <Image url="@story.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    
+                    <!-- Survival Button -->
+                    <Button fx:id="survivalButton" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2; -fx-padding: 0;">
+                        <graphic>
+                            <ImageView fitHeight="120" fitWidth="250" preserveRatio="true">
+                                <Image url="@survival.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    
+                    <!-- Two Player Button -->
+                    <Button fx:id="twoPlayerButton" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2; -fx-padding: 0;">
+                        <graphic>
+                            <ImageView fitHeight="120" fitWidth="250" preserveRatio="true">
+                                <Image url="@two_player.png" />
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    
+                    <!-- Boss Battle Button -->
+                    <Button fx:id="bossBattleButton" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2; -fx-padding: 0;">
+                        <graphic>
+                            <!-- Use image when Boss_Battle_Mode.png is available, otherwise fallback to VBox -->
+                            <ImageView fx:id="bossBattleImage" fitHeight="120" fitWidth="250" preserveRatio="true">
+                                <Image url="@Boss_Battle_Mode.png" />
+                            </ImageView>
+                            
+                            <!-- Fallback VBox (commented out, used if image is missing) -->
+                            <!--
+                            <VBox alignment="CENTER" prefHeight="120" prefWidth="250" style="-fx-background-color: black;">
+                                <Label text="Boss Battle Mode" textFill="RED" style="-fx-font-weight: bold; -fx-font-size: 18px;">
+                                    <font>
+                                        <Font name="Arial Bold" size="18" />
+                                    </font>
+                                </Label>
+                            </VBox>
+                            -->
+                        </graphic>
+                    </Button>
+                    
+                </HBox>
+                
+                <!-- Background image -->
+                <StackPane maxHeight="350" style="-fx-background-color: black;">
+                    <ImageView fitHeight="350" fitWidth="750" preserveRatio="true">
+                        <Image url="@play_menu.jpg" />
+                    </ImageView>
+                </StackPane>
+                
+            </VBox>
+            
+            <!-- High scores panel (initially hidden) -->
+            <VBox fx:id="highScoresPanel" alignment="CENTER" managed="false" prefHeight="470" spacing="0" style="-fx-background-color: black;" visible="false">
+                
+                <!-- Title -->
+                <HBox alignment="CENTER_LEFT">
+                    <padding>
+                        <Insets bottom="10" left="50" right="0" top="20" />
+                    </padding>
+                    <Label text="    Survival Mode High Scores: " textFill="WHITE">
+                        <font>
+                            <Font name="Monospaced Bold" size="16" />
+                        </font>
+                    </Label>
+                </HBox>
+                
+                <!-- Scores grid (2 columns, 5 rows) -->
+                <GridPane fx:id="scoresGrid" alignment="CENTER" hgap="50" vgap="15">
+                    <padding>
+                        <Insets bottom="20" left="0" right="0" top="20" />
+                    </padding>
+                    <!-- Grid will be populated programmatically -->
+                </GridPane>
+                
+            </VBox>
+            
+        </VBox>
+    </center>
+    
+    <!-- Bottom: Menu buttons -->
+    <bottom>
+        <HBox alignment="CENTER" spacing="20" style="-fx-background-color: black;">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10" />
+            </padding>
+            
+            <!-- High Scores Button -->
+            <Button fx:id="highScoresButton" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2; -fx-padding: 0;">
+                <graphic>
+                    <ImageView fitHeight="80.0" fitWidth="250.0" preserveRatio="true">
+                        <Image url="@high_scores.png" />
+                    </ImageView>
+                </graphic>
+            </Button>
+            
+            <!-- Back Button -->
+            <Button fx:id="backButton" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 2; -fx-padding: 0;">
+                <graphic>
+                    <ImageView fitHeight="80.0" fitWidth="250.0" preserveRatio="true">
+                        <Image url="@main_menu.png" />
+                    </ImageView>
+                </graphic>
+            </Button>
+            
+        </HBox>
+    </bottom>
+    
+</BorderPane>
